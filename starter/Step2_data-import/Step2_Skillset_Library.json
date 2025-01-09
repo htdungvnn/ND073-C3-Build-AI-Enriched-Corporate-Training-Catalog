@@ -1,0 +1,121 @@
+{
+  "name": "dung-paper-skillset",
+  "description": "Skillset created from the portal. skillsetName: dung-paper-skillset; contentField: merged_content; enrichmentGranularity: document; knowledgeStoreStorageAccount: ;",
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
+      "name": "#1",
+      "context": "/document/merged_content",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/merged_content",
+          "inputs": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "organizations",
+          "targetName": "organizations"
+        },
+        {
+          "name": "persons",
+          "targetName": "people"
+        }
+      ],
+      "categories": [
+        "Email",
+        "Event",
+        "URL",
+        "PhoneNumber",
+        "IPAddress",
+        "Organization",
+        "DateTime",
+        "Skill",
+        "Location",
+        "PersonType",
+        "Quantity",
+        "Product",
+        "Address",
+        "Person"
+      ],
+      "defaultLanguageCode": "en"
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.TranslationSkill",
+      "name": "#2",
+      "context": "/document/merged_content",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/merged_content",
+          "inputs": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "translatedText",
+          "targetName": "translated_text"
+        }
+      ],
+      "defaultToLanguageCode": "en",
+      "suggestedFrom": "en"
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.MergeSkill",
+      "name": "#3",
+      "context": "/document",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content",
+          "inputs": []
+        },
+        {
+          "name": "itemsToInsert",
+          "source": "/document/normalized_images/*/text",
+          "inputs": []
+        },
+        {
+          "name": "offsets",
+          "source": "/document/normalized_images/*/contentOffset",
+          "inputs": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mergedText",
+          "targetName": "merged_content"
+        }
+      ],
+      "insertPreTag": " ",
+      "insertPostTag": " "
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
+      "name": "#4",
+      "context": "/document/normalized_images/*",
+      "inputs": [
+        {
+          "name": "image",
+          "source": "/document/normalized_images/*",
+          "inputs": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "targetName": "text"
+        },
+        {
+          "name": "layoutText",
+          "targetName": "layoutText"
+        }
+      ],
+      "defaultLanguageCode": "en",
+      "detectOrientation": true,
+      "lineEnding": "Space"
+    }
+  ],
+  "@odata.etag": "\"0x8DD30889D05E13F\""
+}

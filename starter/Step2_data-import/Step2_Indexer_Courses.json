@@ -1,0 +1,28 @@
+{
+  "@odata.context": "https://dung-ai-search.search.windows.net/$metadata#indexers/$entity",
+  "@odata.etag": "\"0x8DD3085C835E24A\"",
+  "name": "dung-course-indexer",
+  "description": "",
+  "dataSourceName": "dung-course",
+  "skillsetName": "dung-course-skillset",
+  "targetIndexName": "dung-course-index",
+  "disabled": null,
+  "schedule": null,
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": 0,
+    "maxFailedItemsPerBatch": 0,
+    "base64EncodeKeys": false,
+    "configuration": {}
+  },
+  "fieldMappings": [],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/description/keyphrases",
+      "targetFieldName": "keyphrases",
+      "mappingFunction": null
+    }
+  ],
+  "cache": null,
+  "encryptionKey": null
+}

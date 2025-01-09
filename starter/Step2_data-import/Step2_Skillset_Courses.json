@@ -1,0 +1,26 @@
+{
+  "name": "dung-course-skillset",
+  "description": "Skillset created from the portal. skillsetName: dung-course-skillset; contentField: description; enrichmentGranularity: document; knowledgeStoreStorageAccount: ;",
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
+      "name": "#1",
+      "context": "/document/description",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/description",
+          "inputs": []
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keyPhrases",
+          "targetName": "keyphrases"
+        }
+      ],
+      "defaultLanguageCode": "en"
+    }
+  ],
+  "@odata.etag": "\"0x8DD3085C5F61BCB\""
+}

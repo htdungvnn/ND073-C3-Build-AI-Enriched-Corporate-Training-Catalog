@@ -1,0 +1,49 @@
+{
+  "name": "dung-course-skillset",
+  "description": "Skillset with added descriptive enrichment for instructors.",
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
+      "name": "#1",
+      "context": "/document/description",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/description"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keyPhrases",
+          "targetName": "keyphrases"
+        }
+      ],
+      "defaultLanguageCode": "en"
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+      "name": "InstructorProfileEnrichment",
+      "context": "/document/instructor",
+      "description": "Enrich instructor data with descriptive profiles from MoodleInstructorProfiles.",
+      "inputs": [
+        {
+          "name": "name",
+          "source": "/document/instructor"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "description",
+          "targetName": "instructor_description"
+        }
+      ],
+      "uri": "https://<your-custom-api>/enrich-instructor-profile",
+      "httpHeaders": {
+        "Ocp-Apim-Subscription-Key": "<your-api-key>"
+      },
+      "httpMethod": "POST",
+      "timeout": "PT5S"
+    }
+  ],
+  "@odata.etag": "\"0x8DD3085C5F61BCB\""
+}

@@ -1,0 +1,43 @@
+Project Overview
+Objective: Develop an AI-Enhanced Corporate Training Portal
+
+Features for Course Discovery and Management
+
+1.  Advanced Course Search:
+    Users can perform searches using specific keywords or phrases derived from all text content, except for fields such as url, partitionKey, and rowKey.
+2.  Comprehensive Search Results:
+    Results should encompass all pertinent data. The user interface will manage filtering to present information tailored to user preferences.
+3.  Filtering and Sorting Options:
+    • By Duration: Users can organize and refine course results based on time length.
+    • By Instructor: The system enables sorting and filtering by the instructor’s name.
+    • By Course Level: Courses can be categorized as beginner, intermediate, or advanced.
+    • By Product Offering: Users can identify courses linked to specific products or services.
+    • By Rating Metrics:
+    • Average Rating: Sort or filter based on average user ratings.
+    • Number of Ratings: Organize results by how many users have rated a course.
+4.  Role-Specific Customization:
+    Users can segment results to reflect courses designed for particular roles or job functions.
+5.  Source-Based Filters:
+    Narrow down courses by origin or publishing platform.
+6.  Keyword-Driven Insights:
+    Search results should support filtering by auto-extracted keywords or phrases associated with course content.
+7.  Instructor Profiles:
+    Each instructor’s enhanced profile, detailing expertise and history, should be viewable alongside their courses.
+    Features for Research Paper and Publication Search
+8.  Intelligent Paper Search:
+    Users should be able to locate academic publications by inputting keywords or phrases. Metadata storage fields will not be included in the search.
+9.  Dynamic Search Results:
+    Results must provide complete and relevant information. The user-facing application will handle filtering to focus on the most useful details.
+10. Author-Based Segmentation:
+    Results can be refined by selecting specific authors or researchers.
+11. Title Sorting:
+    Publications can be sorted alphabetically or according to relevance based on the title.
+12. Chronological Organization:
+    Users can filter or arrange results by the paper’s creation date or publication timeline.
+13. People and Organization Extraction:
+    • Extracted Individuals: Users can narrow down results by key individuals referenced in the publication.
+    • Extracted Organizations: Search can also focus on publications mentioning specific organizations or institutions.
+14. Keyword Contextualization:
+    Search results should support filtering by prominent terms or phrases identified in the content.
+15. DOI Accessibility:
+    Each research paper result must include a functional link to its DOI (Digital Object Identifier) for direct access.
