@@ -33,6 +33,22 @@
     {
       "sourceFieldName": "/document/instructor/entities",
       "targetFieldName": "entities"
+    },
+    {
+      "sourceFieldName": "/document/publicationName",
+      "targetFieldName": "publicationName"
+    },
+    {
+      "sourceFieldName": "/document/publisher",
+      "targetFieldName": "publisher"
+    },
+    {
+      "sourceFieldName": "/document/doi",
+      "targetFieldName": "doi"
+    },
+    {
+      "sourceFieldName": "/document/publicationDate",
+      "targetFieldName": "publicationDate"
     }
   ],
   "cache": null,

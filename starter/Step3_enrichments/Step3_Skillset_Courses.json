@@ -1,6 +1,6 @@
 {
   "name": "dung-course-skillset",
-  "description": "Skillset with added descriptive enrichment for instructors.",
+  "description": "Skillset created from the portal. skillsetName: dung-course-skillset; contentField: description; enrichmentGranularity: document; knowledgeStoreStorageAccount: ;",
   "skills": [
     {
       "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
@@ -9,7 +9,8 @@
       "inputs": [
         {
           "name": "text",
-          "source": "/document/description"
+          "source": "/document/description",
+          "inputs": []
         }
       ],
       "outputs": [
@@ -22,27 +23,35 @@
     },
     {
       "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-      "name": "InstructorProfileEnrichment",
-      "context": "/document/instructor",
-      "description": "Enrich instructor data with descriptive profiles from MoodleInstructorProfiles.",
+      "name": "SpringerLookupSkill",
+      "description": "Enrich data using Springer API for publication information",
+      "uri": "https://dunglookupfunc.azurewebsites.net/api/springerlookup",
+      "batchSize": 1,
+      "context": "/document",
       "inputs": [
         {
-          "name": "name",
-          "source": "/document/instructor"
+          "name": "ArticleName",
+          "source": "/document/description"
         }
       ],
       "outputs": [
         {
-          "name": "description",
-          "targetName": "instructor_description"
+          "name": "PublicationName",
+          "targetName": "publicationName"
+        },
+        {
+          "name": "Publisher",
+          "targetName": "publisher"
+        },
+        {
+          "name": "DOI",
+          "targetName": "doi"
+        },
+        {
+          "name": "PublicationDate",
+          "targetName": "publicationDate"
         }
-      ],
-      "uri": "https://<your-custom-api>/enrich-instructor-profile",
-      "httpHeaders": {
-        "Ocp-Apim-Subscription-Key": "<your-api-key>"
-      },
-      "httpMethod": "POST",
-      "timeout": "PT5S"
+      ]
     }
   ],
   "@odata.etag": "\"0x8DD3085C5F61BCB\""

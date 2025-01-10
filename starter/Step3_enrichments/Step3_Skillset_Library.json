@@ -1,6 +1,6 @@
 {
   "name": "dung-paper-skillset",
-  "description": "Skillset created from the portal with added enrichment for instructor profiles.",
+  "description": "Skillset created from the portal. skillsetName: dung-paper-skillset; contentField: merged_content; enrichmentGranularity: document; knowledgeStoreStorageAccount: ;",
   "skills": [
     {
       "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
@@ -9,7 +9,8 @@
       "inputs": [
         {
           "name": "text",
-          "source": "/document/merged_content"
+          "source": "/document/merged_content",
+          "inputs": []
         }
       ],
       "outputs": [
@@ -47,7 +48,8 @@
       "inputs": [
         {
           "name": "text",
-          "source": "/document/merged_content"
+          "source": "/document/merged_content",
+          "inputs": []
         }
       ],
       "outputs": [
@@ -66,15 +68,18 @@
       "inputs": [
         {
           "name": "text",
-          "source": "/document/content"
+          "source": "/document/content",
+          "inputs": []
         },
         {
           "name": "itemsToInsert",
-          "source": "/document/normalized_images/*/text"
+          "source": "/document/normalized_images/*/text",
+          "inputs": []
         },
         {
           "name": "offsets",
-          "source": "/document/normalized_images/*/contentOffset"
+          "source": "/document/normalized_images/*/contentOffset",
+          "inputs": []
         }
       ],
       "outputs": [
@@ -93,7 +98,8 @@
       "inputs": [
         {
           "name": "image",
-          "source": "/document/normalized_images/*"
+          "source": "/document/normalized_images/*",
+          "inputs": []
         }
       ],
       "outputs": [
@@ -112,27 +118,35 @@
     },
     {
       "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-      "name": "InstructorProfileEnrichment",
+      "name": "SpringerLookupSkill",
+      "description": "Enrich data using Springer API for publication information",
+      "uri": "https://dunglookupfunc.azurewebsites.net/api/springerlookup",
+      "batchSize": 1,
       "context": "/document",
-      "description": "Enrich instructor data with descriptive profiles from MoodleInstructorProfiles.",
       "inputs": [
         {
-          "name": "persons",
+          "name": "ArticleName",
           "source": "/document/merged_content"
         }
       ],
       "outputs": [
         {
-          "name": "descriptions",
-          "targetName": "instructor_descriptions"
+          "name": "PublicationName",
+          "targetName": "publicationName"
+        },
+        {
+          "name": "Publisher",
+          "targetName": "publisher"
+        },
+        {
+          "name": "DOI",
+          "targetName": "doi"
+        },
+        {
+          "name": "PublicationDate",
+          "targetName": "publicationDate"
         }
-      ],
-      "uri": "https://<your-custom-api>/enrich-instructor-profile",
-      "httpHeaders": {
-        "Ocp-Apim-Subscription-Key": "022dd99aba418fbf6f3ee0cd86670db8"
-      },
-      "httpMethod": "POST",
-      "timeout": "PT5S"
+      ]
     }
   ],
   "@odata.etag": "\"0x8DD30889D05E13F\""

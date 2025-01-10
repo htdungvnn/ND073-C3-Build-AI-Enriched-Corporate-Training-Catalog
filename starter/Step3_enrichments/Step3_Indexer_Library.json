@@ -1,10 +1,10 @@
 {
   "@odata.context": "https://dung-ai-search.search.windows.net/$metadata#indexers/$entity",
-  "@odata.etag": "\"0x8D6AD37F2KI8E53\"",
-  "name": "dung-papers-indexer",
+  "@odata.etag": "\"0x8DD312520762AA8\"",
+  "name": "dung-paper-indexer",
   "description": "",
   "dataSourceName": "dung-paper",
-  "skillsetName": "dung-papers-skillset",
+  "skillsetName": "dung-paper-skillset",
   "targetIndexName": "dung-paper-index",
   "disabled": null,
   "schedule": null,
@@ -14,9 +14,9 @@
     "maxFailedItemsPerBatch": 0,
     "base64EncodeKeys": null,
     "configuration": {
+      "imageAction": "generateNormalizedImages",
       "dataToExtract": "contentAndMetadata",
-      "parsingMode": "default",
-      "imageAction": "generateNormalizedImages"
+      "parsingMode": "default"
     }
   },
   "fieldMappings": [
@@ -31,68 +31,54 @@
   ],
   "outputFieldMappings": [
     {
-      "sourceFieldName": "/document/merged_content/people",
-      "targetFieldName": "people"
-    },
-    {
       "sourceFieldName": "/document/merged_content/organizations",
-      "targetFieldName": "organizations"
+      "targetFieldName": "organizations",
+      "mappingFunction": null
     },
     {
-      "sourceFieldName": "/document/merged_content/locations",
-      "targetFieldName": "locations"
+      "sourceFieldName": "/document/merged_content/people",
+      "targetFieldName": "people",
+      "mappingFunction": null
     },
     {
-      "sourceFieldName": "/document/merged_content/keyphrases",
-      "targetFieldName": "keyphrases"
-    },
-    {
-      "sourceFieldName": "/document/language",
-      "targetFieldName": "language"
-    },
-    {
-      "sourceFieldName": "/document/merged_content/pii_entities",
-      "targetFieldName": "pii_entities"
-    },
-    {
-      "sourceFieldName": "/document/merged_content/masked_text",
-      "targetFieldName": "masked_text"
+      "sourceFieldName": "/document/merged_content/translated_text",
+      "targetFieldName": "translated_text",
+      "mappingFunction": null
     },
     {
       "sourceFieldName": "/document/merged_content",
-      "targetFieldName": "merged_content"
+      "targetFieldName": "merged_content",
+      "mappingFunction": null
     },
     {
       "sourceFieldName": "/document/normalized_images/*/text",
-      "targetFieldName": "text"
+      "targetFieldName": "text",
+      "mappingFunction": null
     },
     {
       "sourceFieldName": "/document/normalized_images/*/layoutText",
-      "targetFieldName": "layoutText"
+      "targetFieldName": "layoutText",
+      "mappingFunction": null
     },
     {
-      "sourceFieldName": "/document/normalized_images/*/imageTags/*/name",
-      "targetFieldName": "imageTags"
-    },
-    {
-      "sourceFieldName": "/document/normalized_images/*/imageCaption",
-      "targetFieldName": "imageCaption"
-    },
-    {
-      "sourceFieldName": "/document/publicationName",
-      "targetFieldName": "publicationName"
+      "sourceFieldName": "/document/publication_name",
+      "targetFieldName": "publication_name",
+      "mappingFunction": null
     },
     {
       "sourceFieldName": "/document/publisher",
-      "targetFieldName": "publisher"
+      "targetFieldName": "publisher",
+      "mappingFunction": null
     },
     {
       "sourceFieldName": "/document/doi",
-      "targetFieldName": "doi"
+      "targetFieldName": "doi",
+      "mappingFunction": null
     },
     {
-      "sourceFieldName": "/document/publicationDate",
-      "targetFieldName": "publicationDate"
+      "sourceFieldName": "/document/publication_date",
+      "targetFieldName": "publication_date",
+      "mappingFunction": null
     }
   ],
   "cache": null,
